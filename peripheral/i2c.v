@@ -208,11 +208,11 @@ module i2c (
 				
 			        STOP1 : begin
 						if(phase_rise)
-							sda_oe <= 0;
+							sda_oe <= 1;
 						else if (phase_high)
 						begin
 							state <= STOP2;
-							sda_oe <= 1;
+							sda_oe <= 0;
 						end
 					end
 					
@@ -221,7 +221,7 @@ module i2c (
 						begin
 							busy  <= 1'b0;
 							done  <= 1'b1;
-							err   <= 1'b0;    
+							//err   <= 1'b0;    
 							state <= IDLE;
 							scl_trig <= 0;
 						end
